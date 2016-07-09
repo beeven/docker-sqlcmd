@@ -12,7 +12,8 @@ RUN apt-get update && \
     wget https://download.microsoft.com/download/2/E/5/2E58F097-805C-4AB8-9FC6-71288AB4409D/msodbcsql-13.0.0.0.tar.gz && \
     tar zxf msodbcsql-13.0.0.0.tar.gz && \
     cd msodbcsql-13.0.0.0 && \
-    ./install.sh install --accept-license
+    ./install.sh install --accept-license && \
+    ldconfig
 
 ENV LANG "en_US.UTF-8"
 CMD ["sqlcmd"]
