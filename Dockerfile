@@ -15,7 +15,7 @@ RUN apt-get update && \
     cd msodbcsql-13.0.0.0 && \
     ./install.sh install --accept-license && \
     ldconfig && \
-    apt-get remove gcc && apt-get autoremove && \
+    apt-get remove -y gcc && apt-get autoremove -y && \
     apt-get clean && apt-get autoclean
 
 ENV LANG "en_US.UTF-8"
