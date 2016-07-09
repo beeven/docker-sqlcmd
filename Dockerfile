@@ -15,6 +15,4 @@ RUN apt-get update && \
     ./install.sh install --accept-license
 
 ENV LANG "en_US.UTF-8"
-COPY docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
 CMD ["sqlcmd"]
