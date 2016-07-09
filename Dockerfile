@@ -5,6 +5,7 @@ RUN apt-get update && \
     wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.1.tar.gz && \
     tar zxf unixODBC-2.3.1.tar.gz && \
     cd unixODBC-2.3.1 && \
+    export CPPFLAGS="-DSIZEOF_LONG_INT=8" && \
     ./configure --enable-gui=no --enable-drivers=no --enable-iconv --with-iconv-char-enc=UTF8 --with-iconv-ucode-enc=UTF16LE --libdir=/usr/lib64 --prefix=/usr --sysconfdir=/etc && \
     make && make install && \
     locale-gen "en_US.UTF-8" && \
@@ -13,7 +14,9 @@ RUN apt-get update && \
     tar zxf msodbcsql-13.0.0.0.tar.gz && \
     cd msodbcsql-13.0.0.0 && \
     ./install.sh install --accept-license && \
-    ldconfig
+    ldconfig && \
+    apt-get remove gcc && apt-get autoremove && \
+    apt-get clean && apt-get autoclean
 
 ENV LANG "en_US.UTF-8"
 ENTRYPOINT ["sqlcmd"]
