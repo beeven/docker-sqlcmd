@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 WORKDIR /myapp
 RUN apt-get update && \
-    apt-get install wget build-essential make libkrb5-3 libgss3 && \
+    apt-get install -y wget build-essential make libkrb5-3 libgss3 && \
     wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.1.tar.gz && \
     tar zxf unixODBC-2.3.1.tar.gz && \
     cd unixODBC-2.3.1 && \
